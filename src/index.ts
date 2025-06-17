@@ -1,0 +1,1 @@
+export { heredoc } from "./heredoc";

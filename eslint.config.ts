@@ -1,0 +1,82 @@
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
+
+export default tseslint.config(
+  // Base JS configuration with recommended configs
+  {
+    extends: [js.configs.recommended],
+  },
+
+  // TypeScript configuration
+  tseslint.configs.strictTypeChecked,
+  tseslint.configs.stylisticTypeChecked,
+
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
+
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          prefer: "type-imports",
+          fixStyle: "inline-type-imports",
+        },
+      ],
+
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+      "@typescript-eslint/no-import-type-side-effects": "error",
+
+      "@typescript-eslint/no-empty-object-type": [
+        "error",
+        {
+          allowInterfaces: "with-single-extends",
+        },
+      ],
+
+      "@typescript-eslint/array-type": "error",
+
+      "@typescript-eslint/restrict-template-expressions": [
+        "warn",
+        {
+          allowNumber: true,
+          allowBoolean: true,
+          allowNullish: true,
+        },
+      ],
+
+      // We allow non-null assertions! Since we are using
+      // `noUncheckedIndexedAccess`, there are many places where forbidding
+      // non-null assertions would make correct code overly defensive. Instead,
+      // by allowing non-null assertions, we can call out places where we are
+      // making assumptions about a value, making it easier to review while
+      // enabling stricter ESLint checking.
+      "@typescript-eslint/no-non-null-assertion": "off",
+
+      // Permit things like `while (true) { … }`
+      "@typescript-eslint/no-unnecessary-condition": [
+        "error",
+        {
+          allowConstantLoopConditions: "only-allowed-literals",
+        },
+      ],
+
+      // Allow explicit types even when the type is inferrable
+      "@typescript-eslint/no-inferrable-types": "off",
+    },
+  },
+
+  // Ignore patterns
+  { ignores: ["node_modules/*", "dist/*"] }
+);

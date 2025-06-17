@@ -1,0 +1,56 @@
+{
+  "name": "heredoc-ts",
+  "version": "1.0.0",
+  "description": "A heredoc implementation in TypeScript with support for nested heredocs.",
+  "author": "Corey Ward",
+  "license": "MIT",
+  "repository": "https://github.com/coreyward/heredoc-ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "heredoc",
+    "indentation",
+    "template-literals",
+    "typescript",
+    "prompt-concatenation"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@types/node": "^24.0.3",
+    "@vitejs/plugin-react": "^4.5.2",
+    "eslint": "^9.29.0",
+    "jiti": "^2.4.2",
+    "prettier": "^3.5.3",
+    "tsup": "^8.0.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.1",
+    "vitest": "^3.2.4"
+  }
+}
