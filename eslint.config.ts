@@ -1,15 +1,17 @@
-import js from "@eslint/js";
-import tseslint from "typescript-eslint";
+/* eslint-disable import-x/no-named-as-default-member */
+import js from "@eslint/js"
+import tseslint from "typescript-eslint"
+import { importX } from "eslint-plugin-import-x"
 
 export default tseslint.config(
   // Base JS configuration with recommended configs
-  {
-    extends: [js.configs.recommended],
-  },
+  js.configs.recommended,
 
   // TypeScript configuration
   tseslint.configs.strictTypeChecked,
   tseslint.configs.stylisticTypeChecked,
+  importX.flatConfigs.recommended,
+  importX.flatConfigs.typescript,
 
   {
     languageOptions: {
@@ -19,6 +21,22 @@ export default tseslint.config(
       },
     },
     rules: {
+      curly: ["error", "all"],
+      "no-duplicate-imports": "off",
+      "no-unused-vars": "off",
+      "object-shorthand": ["error", "properties"],
+      "no-unneeded-ternary": "error",
+      "no-implicit-coercion": "error",
+
+      // Import rules
+      "import-x/order": [
+        "warn",
+        {
+          "newlines-between": "never",
+        },
+      ],
+
+      // TypeScript rules
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {
@@ -79,4 +97,4 @@ export default tseslint.config(
 
   // Ignore patterns
   { ignores: ["node_modules/*", "dist/*"] }
-);
+)
