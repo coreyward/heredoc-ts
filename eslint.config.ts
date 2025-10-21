@@ -3,6 +3,7 @@ import js from "@eslint/js"
 import tseslint from "typescript-eslint"
 import { importX } from "eslint-plugin-import-x"
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export default tseslint.config(
   // Base JS configuration with recommended configs
   js.configs.recommended,

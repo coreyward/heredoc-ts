@@ -33,7 +33,7 @@ function zipString(
     const value = String(values[i] ?? "")
 
     s +=
-      String(string) +
+      string +
       value
         .split("\n")
         .map((line, index) => (index === 0 ? line : linePad + line))
