@@ -1,6 +1,6 @@
 {
   "name": "heredoc-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A heredoc implementation in TypeScript with support for nested heredocs.",
   "author": "Corey Ward",
   "license": "MIT",
