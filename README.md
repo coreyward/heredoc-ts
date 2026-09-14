@@ -133,6 +133,9 @@ pnpm install
 # Run tests
 pnpm test
 
+# Run tests with coverage
+pnpm test:coverage
+
 # Build the package
 pnpm build
 
