@@ -130,4 +130,20 @@ describe("heredoc", () => {
       "Here is an example story.\n\n<example>\nI sit at the mat.\nAt the mat, I nap.\nI nap and nap.\n</example>"
     )
   })
+
+  it("returns an empty string when there is no content", () => {
+    expect(heredoc``).toBe("")
+    expect(heredoc`
+    `).toBe("")
+  })
+
+  it("strips only a leading blank line", () => {
+    expect(heredoc`
+      Hello, world!`).toBe("Hello, world!")
+  })
+
+  it("strips only a trailing blank line", () => {
+    expect(heredoc`Hello, world!
+    `).toBe("Hello, world!")
+  })
 })
